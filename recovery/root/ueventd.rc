@@ -35,13 +35,17 @@
 /dev/stpwmt               0660   system     system
 /dev/wmtdetect            0660   system     system
 /dev/fw_log_wmt           0660   system     system
+/dev/conninfra_dev        0660   system     system
 
 # BT
 /dev/stpbt                0660   bluetooth  bluetooth
 /dev/fw_log_bt            0660   bluetooth  bluetooth
 
 # GPS
+/dev/gpsdl0               0660   gps        gps
+/dev/gpsdl1               0660   gps        gps
 /dev/stpgps               0660   gps        gps
+/dev/stpgps2              0660   gps        gps
 /dev/gps                  0660   gps        system
 /dev/fw_log_gps           0660   gps        gps
 /dev/gps_emi              0660   gps        gps
@@ -57,7 +61,9 @@
 /dev/fm                   0660   media     media
 
 # NFC
-/dev/st21nfc              0660   nfc        radio
+/dev/msr3110              0666   root       root
+/dev/mt6605               0660   nfc        radio
+/dev/st21nfc              0666   nfc        radio
 /dev/st54spi              0660   secure_element        secure_element
 
 # MTK BTIF driver
@@ -74,6 +80,20 @@
 /dev/mobicore             0600   system     system
 /dev/mobicore-user        0666   system     system
 /dev/t-base-tui           0666   system     system
+
+#v4l2 device
+/dev/video*      0660 camera system
+/dev/media*      0660 camera system
+/dev/v4l-subdev* 0660 camera system
+
+#v4l2 codec
+/dev/vcu    0660 camera system
+
+#v4l2 camera
+/dev/mtk_hcp     0660 camera system
+
+# DRM node
+/dev/dri/card0            0660   system     system
 
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
@@ -115,16 +135,12 @@
 /sys/devices/platform/leds-mt65xx/leds/red   delay_off      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/blue   delay_on      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/blue   delay_off      0664  system   system
-/sys/class/leds/green   delay_on      0664  system   system
-/sys/class/leds/green   delay_off      0664  system   system
-/sys/class/leds/red   delay_on      0664  system   system
-/sys/class/leds/red   delay_off      0664  system   system
-/sys/class/leds/blue   delay_on      0664  system   system
-/sys/class/leds/blue   delay_off      0664  system   system
 
 #GPIO
 /dev/mtgpio               0600   radio      root
 
+# Camera
+/dev/camera_eeprom*       0660   system     camera
 
 #FOR VIA MODEM
 /dev/ttySDIO*             0660   radio      sdcard_rw
@@ -139,10 +155,11 @@
 #touch
 /dev/touch                0660   root       system
 /dev/hotknot              0660   root       system
+/dev/tll                  0660   root       system
 
 #hang_detect
-/dev/RT_Monitor           0660   system     system
-/dev/kick_powerkey        0660   system     system
+/dev/RT_Monitor           0600   system     system
+/dev/kick_powerkey        0600   system     system
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
